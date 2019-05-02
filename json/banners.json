@@ -1,0 +1,15 @@
+{
+    "status": true,
+    "lista": [
+        {
+            "imagem": "img/banner.png",
+            "url": "",
+            "janela": ""
+        },
+        {
+            "imagem": "img/banner2.png",
+            "url": "",
+            "janela": ""
+        }
+    ]
+}

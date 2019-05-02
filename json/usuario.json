@@ -1,0 +1,19 @@
+{
+    "status": true,
+    "dados": {
+        "idUsuario": 1,
+        "nome": "Robson das Neves",
+        "email": "robson@kiweb.com.br",
+        "telefone": "(51) 3331-2125",
+        "celular": "(51) 99889-7766",
+        "cpf": "123.456.789-00",
+        "senha": "senha123",
+        "cep": "90670-000",
+        "logradouro": "Barão do Amazonas",
+        "numero": 426,
+        "complemento": "Apto 401",
+        "bairro": "Petrópolis",
+        "cidade": "Porto Alegre",
+        "uf": "RS"
+    }
+}

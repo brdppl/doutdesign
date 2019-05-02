@@ -1,0 +1,7 @@
+<section class="banner">
+    <slick infinite=true slides-to-show=1 slides-to-scroll=1 autoplay=true speed=1000 dots=true fade=true arrows=true init-onload=false data="vm.loadBanner" ng-if="vm.loadBanner">
+        <div class="item" ng-repeat="banner in vm.bannerHome">
+            <a href="{{banner.url}}" target="{{banner.janela}}"><img ng-src=".//{{banner.imagem}}" class="img-responsive"></a>
+        </div>
+    </slick>
+</section>

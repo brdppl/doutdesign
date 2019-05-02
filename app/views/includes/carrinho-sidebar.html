@@ -1,0 +1,23 @@
+<div class="carrinho-sidebar" ng-class="{'opened': vm.status.isopen}">
+    <div class="carrinho-header">
+        <h3>Meu carrinho</h3>
+        <a class="close" ng-click="backdropClick()"><i class="fas fa-times"></i></a>
+    </div>
+    <div class="carrinho-body">
+        <ul class="list-unstyled">
+            <li ng-repeat="x in vm.carrinho">
+                <div class="row">
+                    <div class="col-3">
+                        <img ng-src="{{x.foto}}" class="img-fluid">
+                    </div>
+                    <div class="col-9">
+                        <a ui-sref="produto({id: x.idProduto})">({{x.qtd}}) {{x.nome}}</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="carrinho-footer">
+        <a class="btn btn-principal btn-block" ui-sref="carrinho">Finalizar compra</a>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+{
+    "status": true,
+    "lista": [
+        {
+            "idFrete": 1,
+            "tipoFrete": "Sedex",
+            "diasFrete": "10 dias úteis",
+            "valorFrete": 50
+        },
+        {
+            "idFrete": 2,
+            "tipoFrete": "Sedex 10",
+            "diasFrete": "1 dia útil",
+            "valorFrete": 85
+        },
+        {
+            "idFrete": 3,
+            "tipoFrete": "PAC",
+            "diasFrete": "10 dias úteis",
+            "valorFrete": 32
+        }
+    ]
+}

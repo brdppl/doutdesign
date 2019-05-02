@@ -1,0 +1,101 @@
+<div class="dashboard">
+    <div class="container content">
+        <div ng-include="'views/dashboard/navbar-cliente.html'"></div>
+
+        <div class="title-line mt-30 mb-15">
+            <h2 class="title">Meus dados</h2>
+            <p class="line"></p>
+        </div>
+
+        <form ng-submit="vm.salvar(vm.usuario)">
+            <div class="row">
+                <div class="col-12 col-md-5">
+                    <h3>Dados pessoais</h3>
+                    <div class="row">
+                        <div class="col-12">
+                            <label>Nome</label>
+                            <input type="text" class="form-control mb-15" ng-model="vm.usuario.nome">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label>E-mail</label>
+                            <input type="email" class="form-control mb-15" ng-model="vm.usuario.email">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label>CPF</label>
+                            <input type="text" class="form-control mb-15" ui-mask="999.999.999-99" ng-model="vm.usuario.cpf">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label>Telefone</label>
+                            <input type="text" class="form-control mb-15" ui-mask="(99) 9?9999-9999" ng-model="vm.usuario.telefone">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label>Celular</label>
+                            <input type="text" class="form-control mb-15" ui-mask="(99) 9?9999-9999" ng-model="vm.usuario.celular">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 offset-md-1">
+                    <h3>Endereço</h3>
+                    <div class="row">
+                        <div class="col-12 col-md-5">
+                            <label>CEP</label>
+                            <input type="text" class="form-control mb-15" ui-mask="99999-999" ng-model="vm.usuario.cep">
+                        </div>
+                        <div class="col-12 col-md-7">
+                            <label>Logradouro</label>
+                            <input type="text" class="form-control mb-15" ng-model="vm.usuario.logradouro">
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <label>Nº</label>
+                            <input type="text" class="form-control mb-15" mask="9999" ng-model="vm.usuario.numero">
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <label>Complemento</label>
+                            <input type="text" class="form-control mb-15" ng-model="vm.usuario.complemento">
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <label>Bairro</label>
+                            <input type="text" class="form-control mb-15" ng-model="vm.usuario.bairro">
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <label>Cidade</label>
+                            <input type="text" class="form-control mb-15" ng-model="vm.usuario.cidade">
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <label>UF</label>
+                            <select class="form-control mb-15" ng-model="vm.usuario.uf">
+                                <option ng-repeat="estado in estados | orderBy: 'sigla'">{{estado.sigla}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-block-xs btn-principal float-right" style="width: 150px;">Salvar</button>
+                </div>
+            </div>
+        </form>
+
+        <form ng-submit="vm.recuperar(vm.esqueci)">
+            <div class="row">
+                <div class="col-12" style="padding-top: 25px;">
+                    <h3>Alterar senha</h3>
+                </div>
+    
+                <div class="col-12 col-md-3">
+                    <input type="password" class="form-control mb-xs-15" ng-model="vm.esqueci.senha" placeholder="Senha antiga" required> 
+                </div>
+                <div class="col-12 col-md-3">
+                    <input type="password" class="form-control mb-xs-15" ng-model="vm.esqueci.novaSenha" placeholder="Nova senha" required>
+                </div>
+                <div class="col-12 col-md-3">
+                    <input type="password" class="form-control mb-xs-15" ng-model="vm.esqueci.novaSenha2" placeholder="Confirmar nova senha" required>
+                </div>
+                <div class="col-12 col-md-3">
+                    <button type="submit" class="btn btn-block btn-principal">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

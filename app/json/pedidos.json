@@ -1,0 +1,32 @@
+{
+    "status": true,
+    "lista": [
+        {
+            "idPedido": 1,
+            "freteTipo": "SEDEX",
+            "dtPedido": "2018-12-29T11:00:00",
+            "status": "Aguardando",
+            "cliente": "Robson das Neves",
+            "logradouro": "Rua Barão do Amazonas",
+            "numero": 426,
+            "complemento": "Apto 401",
+            "bairro": "Petrópolis",
+            "cidade": "Porto Alegre",
+            "uf": "RS",
+            "produtos": [
+                {
+                    "idPedido": 1,
+                    "idPI": 1,
+                    "produto": "Sofá de couro",
+                    "quantidade": 1,
+                    "valorSomado": 159.90,
+                    "valorUnitario": 159.90
+                }
+            ],
+            "valorDesconto": 0,
+            "valorFrete": 25.40,
+            "valorSubtotal": 159.90,
+            "valorTotal": 185.30
+        }
+    ]
+}

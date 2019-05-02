@@ -1,0 +1,31 @@
+<footer>
+    <div class="container">
+        <div class="row mb-30">
+            <div class="col-12 col-md-8 mb-15">
+                <ul class="list-unstyled multi-column-3">
+                    <li><a ui-sref="inicio">Home</a></li>
+                    <li><a ui-sref="busca({secao: 'Móveis'})">Móveis</a></li>
+                    <li><a ui-sref="busca({secao: 'Ambientes'})">Ambientes</a></li>
+                    <li><a ui-sref="busca({secao: 'Acessórios'})">Acessórios</a></li>
+                    <li ng-if="!Login.status"><a ui-sref="login">Login</a></li>
+                    <li><a ui-sref="contato">Fale conosco</a></li>
+                    <li><a ui-sref="sobre">Quem somos</a></li>
+                    <li><a ui-sref="faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-4 mb-15">
+                <label>Formas de pagamento</label>
+                <img src="img/bandeiras.png" class="img-fluid">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 mb-15">
+                <p class="copyright">2019 &copy; Todos os direitos reservados à Dout Design Ltda.</p>
+            </div>
+            <div class="col-12">
+                <p class="assinatura"><a href="http://kiweb.com.br/" target="_blank">Desenvolvido por <b>KIWEB</b></a></p>
+            </div>
+        </div>
+    </div>
+</footer>

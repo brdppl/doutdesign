@@ -1,0 +1,110 @@
+<div class="pagina-produto">
+    <div class="container content">
+        <div class="row">
+            <div class="col-12 col-md-6 mb-xs-30">
+                <slick class="slider-for img-principal" infinite=true slides-to-show=1 slides-to-scroll=1 responsive="vm.config" init-onload=false data="vm.loadFotos" ng-if="vm.loadFotos">
+                    <div class="item" ng-repeat="x in vm.produto.fotos">
+                        <img wip-image-zoom src="{{x.foto}}" class="img-fluid center-block">
+                        <!-- <span class="badge" ng-if="vm.produto.promocao">{{vm.produto.desconto}}%</span> -->
+                        <span ng-if="vm.produto.promocao" class="promocao">Promoção</span>
+                        <div class="absolute">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </slick>
+                <slick class="slider-nav" infinite=true responsive="vm.config2" init-onload=false data="vm.loadFotos2" ng-if="vm.loadFotos2">
+                    <div class="item" ng-repeat="x in vm.produto.fotos">
+                        <img src="{{x.foto}}" class="img-fluid">
+                    </div>
+                </slick>
+            </div>
+
+            <div class="col-12 col-md-5 offset-md-1">
+                <div class="box-info">
+                    <form ng-submit="">
+                        <h3>{{vm.produto.titulo}}</h3>
+
+                        <div class="row mt-30 mb-30" ng-if="vm.produto.opcoes">
+                            <div class="col-12 col-md-8 offset-md-2">
+                                <div class="mb-15" ng-repeat="x in vm.produto.opcoes">
+                                    <label>{{x.opcao}}</label>
+                                    <select class="form-control" ng-model="vm.opcao" required>
+                                        <option disabled selected value="">Selecione uma opção</option>
+                                        <option ng-repeat="i in x.itens">{{i.item}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="preco-antigo" ng-if="vm.produto.promocao">De {{vm.produto.precoCerto | currency}}</p>
+                        <p class="produto-preco">
+                            <span>Por</span> {{vm.produto.preco | currency}}<br>
+                            <span>
+                                ou<br>
+                                até <b>6x de {{vm.produto.preco/6 | currency}}</b> sem juros
+                            </span>
+                        </p>
+
+                        <button type="submit" class="btn btn-principal btn-lg btn-block mt-50">Adicionar ao carrinho</button>
+                    </form>
+                    <br><br>
+                    <form>
+                        <label>Consulte frete e prazo de entrega</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Digite seu CEP" ng-model="vm.cep" ui-mask="99999-999" ui-mask-placeholder>
+                            <div class="input-group-append">
+                                <button class="btn btn-principal" type="submit" ng-click="vm.calcularFrete(vm.cep)"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="centraliza" ng-if="vm.loading">
+                        <div class="fa-2x">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </div>
+                    <div class="table-responsive" ng-if="vm.showFrete">
+                        <table class="table table-sm table-hover table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Valor</th>
+                                    <th>Prazo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>SEDEX</td>
+                                    <td>R$45,00</td>
+                                    <td>2 dias úteis</td>
+                                </tr>
+                                <tr>
+                                    <td>PAC</td>
+                                    <td>R$25,00</td>
+                                    <td>7 dias úteis</td>
+                                </tr>
+                                <tr>
+                                    <td>Transportadora</td>
+                                    <td>R$20,00</td>
+                                    <td>12 dias úteis</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-50">
+            <div class="col-12 sobre-produto">
+                <div class="title-line mb-15">
+                    <h4 class="title">Sobre este produto</h4>
+                    <div class="line"></div>
+                </div>
+                <div ng-bind-html="vm.produto.descricao"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Outros produtos -->
+<div ng-include="'views/includes/outros-produtos.html'"></div>

@@ -1,0 +1,28 @@
+<div class="outros-produtos produtos content">
+    <div class="container">
+        <div class="title-line mb-30">
+            <h4 class="title">Veja também</h4>
+            <p class="line"></p>
+        </div>
+
+        <slick responsive="vm.configOutros" infinite=true slides-to-show=4 slides-to-scroll=4 autoplay=true arrows=true speed=700 init-onload=false data="vm.loadOutros" ng-if="vm.loadOutros">
+            <div class="item" ng-repeat="x in vm.produtos | filter:{'categoria': vm.produto.categoria}" ng-if="vm.produto.idProduto !== x.idProduto">
+                <a ui-sref="produto({id: x.idProduto})">
+                    <div class="box-produto">
+                        <span ng-if="x.promocao" class="promocao">Promoção</span>
+                        <div class="box-img">
+                            <img ng-src="{{x.foto}}">
+                        </div>
+                        <p class="produto-nome">{{x.titulo | limite}}</p>
+                        <p class="produto-preco" ng-if="!x.promocao">{{x.preco | currency}}</p>
+                        <p class="produto-preco preco-promocao" ng-if="x.promocao">
+                            <span class="antigo">{{x.precoCerto | currency}}</span>
+                            <span>{{x.preco | currency}}</span>
+                        </p>
+                        <a ui-sref="produto({id: x.idProduto})" class="btn btn-produto btn-block">Detalhes do produto</a>
+                    </div>
+                </a>
+            </div>
+        </slick>
+    </div>
+</div>

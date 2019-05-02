@@ -1,0 +1,208 @@
+{
+    "status": true,
+    "lista": [
+        {
+            "idProduto": 1,
+            "titulo": "Sofá de couro",
+            "foto": "img/produtos/produto1.jpg",
+            "fotos": [
+                {
+                    "idFoto": 1,
+                    "foto": "img/produtos/produto1.jpg"
+                },
+                {
+                    "idFoto": 1,
+                    "foto": "img/produtos/produto1-2.jpg"
+                },
+                {
+                    "idFoto": 1,
+                    "foto": "img/produtos/produto1-3.jpg"
+                }
+            ],
+            "preco": 899.91,
+            "promocao": 1,
+            "precoCerto": 999.90,
+            "precoPromocao": 899.91,
+            "desconto": 10,
+            "categoria": "Sofás",
+            "idCategoria": 1,
+            "secao": "Móveis",
+            "dtCadastro": "2019-01-01T11:00:00",
+            "destaque": 1,
+            "opcoes": [
+                {
+                    "ativo": 1,
+                    "idOpcao": 10,
+                    "idProduto": 1,
+                    "opcao": "Cor",
+                    "itens": [
+                        {
+                            "item": "Cinza",
+                            "idProduto": 1
+                        },
+                        {
+                            "item": "Preto",
+                            "idProduto": 1
+                        },
+                        {
+                            "item": "Marrom",
+                            "idProduto": 1
+                        }
+                    ]
+                }
+            ],
+            "descricao": "<p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.</p>",
+            "visitas": 300
+        },
+        {
+            "idProduto": 2,
+            "titulo": "Cama King Size",
+            "foto": "img/produtos/produto2.jpg",
+            "fotos": [
+                {
+                    "idFoto": 1,
+                    "foto": "img/produtos/produto2.jpg"
+                },
+                {
+                    "idFoto": 1,
+                    "foto": "img/produtos/produto2-2.jpg"
+                }
+            ],
+            "preco": 1699.90,
+            "promocao": 0,
+            "precoCerto": 1699.90,
+            "precoPromocao": 1699.90,
+            "desconto": 0,
+            "categoria": "Camas",
+            "idCategoria": 2,
+            "secao": "Móveis",
+            "dtCadastro": "2019-02-06T11:00:00",
+            "destaque": 1,
+            "opcoes": [],
+            "descricao": "<p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.</p>",
+            "visitas": 500
+        },
+        {
+            "idProduto": 3,
+            "titulo": "Sofá 3 lugares",
+            "foto": "img/produtos/produto3.jpg",
+            "fotos": [
+                {
+                    "idFoto": 1,
+                    "foto": "img/produtos/produto3.jpg"
+                },
+                {
+                    "idFoto": 1,
+                    "foto": "img/produtos/produto3.jpg"
+                },
+                {
+                    "idFoto": 1,
+                    "foto": "img/produtos/produto3.jpg"
+                }
+            ],
+            "preco": 699.90,
+            "promocao": 0,
+            "precoCerto": 699.90,
+            "precoPromocao": 699.90,
+            "desconto": 0,
+            "categoria": "Sofás",
+            "idCategoria": 1,
+            "secao": "Móveis",
+            "dtCadastro": "2019-02-04T11:00:00",
+            "destaque": 1,
+            "opcoes": [
+                {
+                    "ativo": 1,
+                    "idOpcao": 10,
+                    "idProduto": 3,
+                    "opcao": "Quantidade",
+                    "itens": [
+                        {
+                            "item": "5KG",
+                            "idProduto": 3
+                        },
+                        {
+                            "item": "10KG",
+                            "idProduto": 3
+                        },
+                        {
+                            "item": "15KG",
+                            "idProduto": 3
+                        }
+                    ]
+                }
+            ],
+            "descricao": "<p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.</p>",
+            "visitas": 800
+        },
+        {
+            "idProduto": 4,
+            "titulo": "Cadeira confortável master",
+            "foto": "img/produtos/produto4.jpg",
+            "fotos": [
+                {
+                    "idFoto": 1,
+                    "foto": "img/produtos/produto4.jpg"
+                }
+            ],
+            "preco": 349.90,
+            "promocao": 0,
+            "precoCerto": 349.90,
+            "precoPromocao": 349.90,
+            "desconto": 0,
+            "categoria": "Cadeiras",
+            "idCategoria": 3,
+            "secao": "Móveis",
+            "dtCadastro": "2019-02-05T11:00:00",
+            "destaque": 1,
+            "opcoes": [
+                {
+                    "ativo": 1,
+                    "idOpcao": 10,
+                    "idProduto": 4,
+                    "opcao": "Cor",
+                    "itens": [
+                        {
+                            "item": "Vermelho",
+                            "idProduto": 4
+                        },
+                        {
+                            "item": "Azul",
+                            "idProduto": 4
+                        },
+                        {
+                            "item": "Verde",
+                            "idProduto": 4
+                        }
+                    ]
+                }
+            ],
+            "descricao": "<p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.</p>",
+            "visitas": 700
+        },
+        {
+            "idProduto": 5,
+            "titulo": "Poltrona clássica",
+            "foto": "img/produtos/produto5.jpg",
+            "fotos": [
+                {
+                    "idFoto": 1,
+                    "foto": "img/produtos/produto5.jpg"
+                }
+            ],
+            "preco": 599.90,
+            "promocao": 0,
+            "precoCerto": 599.90,
+            "precoPromocao": 599.90,
+            "desconto": 0,
+            "categoria": "Poltronas",
+            "idCategoria": 4,
+            "secao": "Móveis",
+            "dtCadastro": "2019-03-15T11:00:00",
+            "destaque": 1,
+            "opcoes": [],
+            "descricao": "<p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.</p>",
+            "visitas": 400
+        }
+    ]
+}

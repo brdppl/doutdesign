@@ -1,0 +1,87 @@
+<div class="pagina-contato">
+    <div class="container content">
+        <div class="title-line">
+            <h4 class="title">Entre em contato conosco</h4>
+            <div class="line"></div>
+        </div>
+        <div class="row mt-50">
+            <div class="col-12 col-md-6 mb-xs-50">
+                <form ng-submit="vm.enviar(vm.contato)">
+                    <div class="row">
+                        <div class="col-12 col-md-6 mb-15">
+                            <label>Nome</label>
+                            <input type="text" class="form-control" ng-model="vm.contato.nome" required>
+                        </div>
+                        <div class="col-12 col-md-6 mb-15">
+                            <label>Telefone</label>
+                            <input type="text" class="form-control" ng-model="vm.contato.telefone" ui-mask="(99) 9?9999-9999">
+                        </div>
+                        <div class="col-12 mb-15">
+                            <label>E-mail</label>
+                            <input type="email" class="form-control" ng-model="vm.contato.email" required>
+                        </div>
+                        <div class="col-12 mb-15">
+                            <label>Mensagem</label>
+                            <textarea class="form-control" rows="5" ng-model="vm.contato.mensagem"required></textarea>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-principal btn-block-xs float-right" style="width: 150px;">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-12 col-sm-5 offset-md-1">
+                <div class="row mb-50">
+                    <div class="col-12 mb-30">
+                        <div class="icon-container">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contato-container">
+                            <h5>Telefone</h5>
+                            <a href="tel:+55{{contatos.telefone1}}">{{contatos.telefone1}}</a>
+                            <!-- <span style="font-size: 16px;">/</span>
+                            <a href="tel:+55{{contatos.telefone2}}">{{contatos.telefone2}}</a> -->
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="icon-container">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contato-container">
+                            <h5>Atendimento</h5>
+                            <a href="mailto:{{contatos.email}}">{{contatos.email}}</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-50">
+                    <div class="col-12 mb-30">
+                        <div class="icon-container">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="contato-container">
+                            <a href="https://facebook.com/{{contatos.facebook}}" target="_blank">/{{contatos.facebook}}</a>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-30">
+                        <div class="icon-container">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="contato-container">
+                            <a href="https://instagram.com/{{contatos.instagram}}" target="_blank">@{{contatos.instagram}}</a>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="icon-container">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                        <div class="contato-container">
+                            <a href="https://twitter.com/{{contatos.twitter}}" target="_blank">@{{contatos.twitter}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

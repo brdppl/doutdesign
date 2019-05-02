@@ -1,0 +1,7 @@
+<div class="pagina-sobre">    
+    <div class="container content" ng-repeat="x in vm.conteudo | filter:{'secao': 'Sobre'} | limitTo: 1">
+        <h3>{{x.titulo}}</h3>
+        <br>
+        <div ng-bind-html="x.conteudo"></div>
+    </div>
+</div>

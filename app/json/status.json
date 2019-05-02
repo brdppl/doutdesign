@@ -1,0 +1,9 @@
+{
+    "status": true,
+    "msg": "Sucesso!",
+    "tipo": 1,
+    "dados": {
+        "nome": "Robson das Neves",
+        "email": "robson@kiweb.com.br"
+    }
+}

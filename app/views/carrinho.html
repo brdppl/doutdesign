@@ -1,0 +1,128 @@
+<div class="carrinho">
+    <div class="container content">
+        <div class="title-line mb-30">
+            <h2 class="title">Meu carrinho</h2>
+            <p class="line"></p>
+        </div>
+
+        <div class="table-responsive">   
+            
+            <div class="alert alert-info" ng-if="!vm.carrinho.length">
+                <i class="fas fa-info-circle"></i> Seu carrinho está vazio
+            </div>
+
+            <table ng-if="vm.carrinho.length" class="table table-hover" style="margin-bottom: 0;">
+                <thead>
+                    <tr>
+                        <th>Excluir</th>
+                        <th>Produto</th>
+                        <th>Preço (un.)</th>
+                        <th>Quantidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in vm.carrinho">
+                        <td><a ng-click="vm.delCarrinho($index)" class="delete"><i class="far fa-trash-alt"></i></a></td>
+                        <td>{{x.nome}}</td>
+                        <td>{{x.preco | currency}}</td>
+                        <td style="width: 50px;"><input type="number" class="form-control" min="1" ng-model="x.qtd" ng-change="vm.qtdCarrinho($index, x.qtd)" ></td>
+                    </tr>
+                    <tr ng-if="vm.pedido.valorDesconto > 0">
+                        <td colspan="3" style="text-align: right;">Desconto ({{vm.pedido.codigoCupom}}): </td>
+                        <td style="text-align: right;">{{vm.pedido.valorDesconto | currency}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: right;">Sub-total: </td>
+                        <td style="text-align: right;">{{vm.getPrecoTotal() | currency}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: right;">Frete: </td>
+                        <td style="text-align: right;">{{vm.valorFrete | currency}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: right;">Total: </td>
+                        <td style="text-align: right;"><b>{{vm.getPrecoTotal()  -- valorFrete | currency}}</b></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row" ng-if="vm.carrinho.length">
+            <div class="col-12" style="margin-top: 20px;">
+                <a ui-sref="inicio" class="btn btn-principal btn-block-xs float-right">Continuar comprando</a>
+            </div>
+
+            <div class="col-12 mt-30">
+                <form ng-submit="vm.validaCupom(vm.cupom)" class="form-inline">
+                    <div class="form-group mb-2">
+                        <label for="desconto">Cupom de desconto:</label>
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2 mb-xs-15">
+                        <input type="text" class="form-control" id="desconto" ng-model="vm.cupom.codigo" required>
+                    </div>
+                    <button type="submit" class="btn btn-principal btn-block-xs mb-2">Enviar</button>
+                </form>
+            </div>
+        </div>
+        <hr style="border-color: #003953;" ng-if="vm.carrinho.length">
+        <div class="row frete" ng-if="vm.carrinho.length">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h3>Frete</h3>
+                        <input type="text" class="form-control mb-15" placeholder="CEP" ui-mask="99999-999" ui-mask-placeholder ng-model="vm.endereco.cep" id="cep" name="cep">
+                        <button class="btn btn-principal btn-block" ng-click="vm.buscaCep(vm.endereco.cep)">Calcular frete</button>
+                    </div>
+                    <div class="col-sm-4">
+                        <h3>Endereço de entrega</h3>
+                        <input type="text" class="form-control mb-15" placeholder="Endereço" ng-model="vm.endereco.logradouro" id="logradouro" name="logradouro">
+                        <input type="text" class="form-control mb-15" placeholder="Complemento" ng-model="vm.endereco.complemento" id="complemento" name="complemento">
+                        <input type="text" class="form-control mb-15" placeholder="Cidade" ng-model="vm.endereco.cidade" id="cidade" name="cidade">
+                    </div>
+                    <div class="col-sm-4">
+                        <h3 style="visibility: hidden;" class="hidden-xs">&nbsp;</h3>
+                        <input type="text" class="form-control mb-15" placeholder="Número" ng-model="vm.endereco.numero" id="numero" name="numero">
+                        <input type="text" class="form-control mb-15" placeholder="Bairro" ng-model="vm.endereco.bairro" id="bairro" name="bairro">
+                        <input type="text" class="form-control mb-15" placeholder="Estado" ng-model="vm.endereco.uf" id="uf" name="uf">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2 mb-xs-30">
+                <h3>Forma de entrega</h3>
+                <div class="metodos">
+                    <label ng-repeat="entrega in vm.listaEntrega">
+                        <input type="radio" id="{{entrega.tipo}}" ng-value="entrega.valor" name="entrega"
+                                ng-click="vm.mudarValorFrete(entrega.tipo, entrega.valor)">
+                        {{entrega.tipo}} - {{entrega.valor | currency}}<br />(Prazo: {{entrega.prazoEntrega}} <span ng-if="entrega.prazoEntrega === 1">dia</span><span ng-if="entrega.prazoEntrega > 1 || entrega.prazoEntrega <= 0">dias</span>)
+                    </label> 
+                </div>
+            </div>
+            <div class="col-sm-2 mb-xs-30">
+                <h3>Forma de pagamento</h3>
+                <div class="form-check mb-15">
+                    <input type="radio" class="form-check-input" name="pagamento" ng-model="pagseguro" ng-checked="pagseguro">
+                    <label class="form-check-label">PagSeguro</label>
+                </div>
+
+                <div class="alert fadeHideShow alert-warning"
+                 ng-show="!usuario.logado">
+                    <b>Atenção!</b> Você precisa realizar o login.
+                </div>
+            </div>
+
+            <div style="display: inline-block; width: 100%;" class="alert fadeHideShow "
+            ng-class="{'alert-success': vm.retornoPedido.status, 'alert-warning': vm.retornoPedido.erro}"
+            ng-show="vm.retornoPedido.msg">
+                <b>{{vm.retornoPedido.status ? "Tudo certo!":"Atenção!"}}</b> {{vm.retornoPedido.msg}}
+            </div>
+
+            <div class="col-sm-12">
+                <!-- <button class="btn btn-block-xs float-right btn-principal" ng-disabled="(!validaFinalizar(carrinho, valorFrete, endereco))"
+                ng-click="vm.finalizarPedido(endereco, valorFrete, opcaoFrete, tipoPagamento, (getPrecoTotal() -- valorFrete))" style="width: 150px;">Finalizar compra</button> -->
+                <button class="btn btn-block-xs float-right btn-principal" ng-click="vm.checkoutTeste(vm.carrinho)" style="width: 150px;">Finalizar compra</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal checkout -->
+<div ng-include="'views/includes/checkout.html'" ng-controller="checkoutCtrl as vm"></div>

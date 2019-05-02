@@ -1,0 +1,28 @@
+<div id="modalEsqueciSenha" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Esqueci minha senha</h4>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <p class="text-center mb-15">Digite seu E-mail cadastrado para enviarmos as instruções necessárias.</p>
+
+                <form ng-submit="vm.recuperar(vm.esqueci)">
+                    <div class="row">
+                        <div class="col-xs-12 mb-15">
+                            <label>E-mail</label>
+                            <input type="email" class="form-control" ng-model="vm.esqueci.email" style="background-color: #e8e8e8;" required>
+                        </div>
+                        <div class="col-xs-12">
+                            <button type="submit" class="btn btn-principal btn-block">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

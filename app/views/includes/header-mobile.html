@@ -1,0 +1,21 @@
+<div class="header-mobile">
+    <div class="container">
+        <ul class="list-unstyled">
+            <li ng-if="Login.status"><a ui-sref="meus-dados" class="usuario"><b>Olá, {{firstName}}</b> <i class="fas fa-chevron-right"></i></a></li>
+            <li><a ui-sref="inicio">Home</a></li>
+            <li><a ng-click="vm.showOptions('Móveis')">Móveis</a><i class="fas fa-chevron-right"></i></li>
+            <li><a ng-click="vm.showOptions('Ambientes')">Ambientes</a><i class="fas fa-chevron-right"></i></li>
+            <li><a ng-click="vm.showOptions('Acessórios')">Acessórios</a><i class="fas fa-chevron-right"></i></li>
+            <li ng-if="!Login.status"><a ui-sref="login">Login</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="second-step">
+    <div class="container">
+        <h4 style="margin-left: 15px; font-size: 20px;"><a ng-click="vm.backOptions()"><i class="fas fa-arrow-left" style="font-size: 22px; margin-right: 10px;"></i></a>{{vm.category}}</h4>
+        <ul class="list-unstyled">
+            <li ng-repeat="x in vm.categorias | filter:{'secao': vm.category}"><a ui-sref="busca({categoria: x.categoria})">{{x.categoria}}</a></li>
+        </ul>
+    </div>
+</div>

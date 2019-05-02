@@ -1,0 +1,149 @@
+<div class="modal fade" id="modalCheckout" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" ng-show="!vm.mostra">
+            <div class="modal-header">
+                <h5 class="modal-title" ng-if="!vm.parcelado">Valor total: {{vm.getTotal() -- valorFrete | currency}}</h5>
+                <h5 class="modal-title" ng-if="vm.parcelado">Valor Total: {{valorParcelado | currency}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" data-target="#credito">Cartão de crédito</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" data-target="#debito">Débito online</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" data-target="#boleto">Boleto bancário</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="credito" class="tab-pane fade show active">
+                        <p>Selecione a bandeira do seu cartão</p>
+                        <ul class="cartoes">
+                            <li ng-class="{'ativo':vm.selectedTab === 'visa'}" ng-click="vm.selectedTab = 'visa'"><a href="" id="visa"><img src="img/bandeiras/visa.png"></a></li>
+                            <li ng-class="{'ativo':vm.selectedTab === 'master'}" ng-click="vm.selectedTab = 'master'"><a href="" id="master"><img src="img/bandeiras/mastercard.png"></a></li>
+                            <li ng-class="{'ativo':vm.selectedTab === 'elo'}" ng-click="vm.selectedTab = 'elo'"><a href="" id="elo"><img src="img/bandeiras/elo.png"></a></li>
+                            <li ng-class="{'ativo':vm.selectedTab === 'amex'}" ng-click="vm.selectedTab = 'amex'"><a href="" id="amex"><img src="img/bandeiras/amex.png"></a></li>
+                            <li ng-class="{'ativo':vm.selectedTab === 'diners'}" ng-click="vm.selectedTab = 'diners'"><a href="" id="diners"><img src="img/bandeiras/diners.png"></a></li>
+                        </ul>
+
+                        <div ng-if="vm.selectedTab">
+                            <form method="post" id="formC" name="formC">
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <label>Nome conforme cartão (Completo)</label>
+                                        <input type="text" class="form-control" placeholder="Como impresso no cartão" ng-model="pagamento.nome" id="creditCardHolderName" name="creditCardHolderName" required >
+                                    </div>
+                                    <div class="col-12 col-md-6 numeroCartao">
+                                        <label>Número do cartão</label>
+                                        <input type="text" class="form-control" id="cardNumber" name="cardNumber" ng-model="pagamento.cartao" ng-blur="vm.getBandeira()"  required>
+                                        <img src="img/bandeiras/visa.png" ng-if="vm.selectedTab === 'visa'">
+                                        <img src="img/bandeiras/mastercard.png" ng-if="vm.selectedTab === 'master'">
+                                        <img src="img/bandeiras/elo.png" ng-if="vm.selectedTab === 'elo'">
+                                        <img src="img/bandeiras/amex.png" ng-if="vm.selectedTab === 'amex'">
+                                        <img src="img/bandeiras/diners.png" ng-if="vm.selectedTab === 'diners'">
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label style="width:100%;">Validade</label>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <select class="form-control" id="expirationMonth" name="expirationMonth" placeholder="Mês" required>
+                                                    <option ng-repeat="m in vm.meses" ng-value="m">{{m}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-6">
+                                                <select id="expirationYear" class="form-control" name="expirationYear" placeholder="Ano" required>
+                                                    <option ng-repeat="a in vm.anos" ng-value="a">{{a}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label>Código de segurança</label>
+                                        <input type="number" class="form-control" placeholder="CVV" id="cvv" name="cvv" required>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label>Parcelas</label>
+                                        <select class="form-control" id="parcelamento" name="parcelamento" ng-model="pagamento.parcelamento" required ng-blur="vm.mudaPreco()"> 
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label>CPF do titular do cartão</label>
+                                        <input type="text" class="form-control" id="creditCardHolderCPF" name="creditCardHolderCPF" ng-model="pagamento.cpf" required>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label>Data de nascimento do titular do cartão</label>
+                                        <input type="date" class="form-control" id="creditCardHolderBirthDate" name="cardNumbcreditCardHolderBirthDateer" required>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <label>Telefone do titular do cartão</label>
+                                        <input type="hidden" id="creditCardHolderAreaCode" name="creditCardHolderAreaCode" value="51"/>
+                                        <input type="text" class="form-control" id="creditCardHolderPhone" name="creditCardHolderPhone" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <!-- <button ng-if="vm.selectedTab" type="button" class="btn btn-principal btn-block-xs" ng-click="vm.pagar('creditCard')">Realizar pagamento</button> -->
+                                        <button ng-if="vm.selectedTab" type="button" class="btn btn-principal btn-block-xs" ng-click="vm.mostra = true">Realizar pagamento</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="debito" class="tab-pane fade">
+                        <p>Selecione o seu banco:</p>
+                        <ul class="bancos">
+                            <li ng-class="{'ativo':vm.selectedTab === 'itau'}" ng-click="vm.selectedTab = 'itau'"><a href="" id="itau"><img src="https://stc.pagseguro.uol.com.br/public/img/payment-methods-flags/68x30/itau.png" class="img-fluid">Banco Itaú</a></li>
+                            
+                            <li ng-class="{'ativo':vm.selectedTab === 'bradesco'}" ng-click="vm.selectedTab = 'bradesco'"><a href="" id="bradesco"><img src="https://stc.pagseguro.uol.com.br/public/img/payment-methods-flags/68x30/bradesco.png" class="img-fluid">Banco Bradesco</a></li>
+                            <li ng-class="{'ativo':vm.selectedTab === 'BANRISUL'}" ng-click="vm.selectedTab = 'BANRISUL'"><a href="" id="banrisul"><img src="https://stc.pagseguro.uol.com.br/public/img/payment-methods-flags/68x30/banrisul.png" class="img-fluid">Banrisul</a></li>
+                            <li ng-class="{'ativo':vm.selectedTab === 'BANCO_BRASIL'}" ng-click="vm.selectedTab = 'BANCO_BRASIL'"><a href="" id="bb"><img src="https://stc.pagseguro.uol.com.br/public/img/payment-methods-flags/68x30/bb.png" class="img-fluid">Banco do Brasil</a></li>
+                           
+                        </ul>
+                        <p>Após selecionar o banco e clicar em "Realizar pagamento" você será redirecionado ao site do seu banco, assim é possível realizar o pagamento em total segurança.</p>
+                        
+                         <button type="button" class="btn btn-principal btn-block-xs" ng-click="vm.pagar('eft',vm.selectedTab)">Realizar pagamento</button>
+                        
+                    </div>
+                    <div id="boleto" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-sm-2 col-md-1">
+                                <i class="fa fa-barcode" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-sm-10 col-md-11">
+                                <p>O pedido será confirmado apenas após a confirmação do pagamento.</p>
+                                <p><b>Taxa: </b>R$1,00 (taxa aplicada para cobrir custos de gestão de risco de meio de pagamento).</p>
+                            </div>
+                        </div>
+                        <p>Após clicar em "Realizar pagamento" você recebará o seu boleto bancário, será possível imprimi-lo e pagar pelo site do seu banco ou em uma casa lotérica.</p>
+                        
+                        <button type="button" class="btn btn-principal btn-block-xs" ng-click="vm.pagar('boleto')">Realizar pagamento</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                
+            </div>
+        </div><!-- /.modal-content -->
+        
+        <div class="modal-content" ng-show="vm.mostra">
+            <div class="modal-body modal-confirm" id="check">
+                <div class="row">
+                    <div class="col-12 text-center animated pulse"><i class="far fa-check-circle" aria-hidden="true"></i></div>
+                    <div class="col-12 text-center animated fadeIn">Pagamento realizado com sucesso!</div>
+                    <div class="col-12 text-center" style="margin-top: 25px;">
+                        <a ng-click="vm.getOut('inicio')" class="btn btn-principal btn-block-xs mb-xs-15">Continuar navegando</a>
+                        <button type="button" class="btn btn-block-xs btn-light" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript" src=
+"https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js">
+
+</script>
+ <input type="hidden" id="valorPagto" name="valorPagto" value="{{vm.getTotal() -- valorFrete}}" />
+<script type="text/javascript">
+      
+</script>

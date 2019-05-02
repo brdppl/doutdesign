@@ -1,0 +1,127 @@
+<div class="pagina-login">
+    <div class="container content">
+        <div class="row">
+            <div class="col-12 col-lg-4 mb-xs-50 mb-sm-50">
+                <div class="row mb-30">
+                    <div class="col-12">
+                        <div class="title-line">
+                            <h4 class="title">Já sou cadastrado</h4>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <form ng-submit="vm.logar(vm.usuario)">
+                    <div class="row mb-30">
+                        <div class="col-12 mb-15">
+                            <label>E-mail</label>
+                            <input type="email" class="form-control" ng-model="vm.usuario.email" required>
+                        </div>
+                        <div class="col-12 mb-15">
+                            <label>Senha</label>
+                            <input type="password" class="form-control" ng-model="vm.usuario.senha" required>
+                        </div>
+                        <div class="col-12 col-lg-6 order-lg-2 mb-sm-15 mb-xs-15">
+                            <button type="submit" class="btn btn-principal btn-block">Entrar</button>
+                        </div>
+                        <div class="col-12 col-lg-6 order-lg-1">
+                            <a ng-click="vm.openEsqueciSenha()">Esqueci minha senha</a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="title-line mb-15">
+                                <div class="line"></div>
+                                <h4 class="title" style="margin-left: 30px;">Ou</h4>
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 mb-15">
+                                    <button type="button" class="btn btn-social btn-facebook btn-block"><i class="fab fa-facebook-f"></i>Entrar com o Facebook</button>
+                                </div>
+                                <div class="col-12">
+                                    <button type="button" class="btn btn-social btn-google btn-block"><i class="fab fa-google"></i>Entrar com o Google</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-sx-12 col-lg-7 offset-lg-1">
+                <div class="row mb-30">
+                    <div class="col-12">
+                        <div class="title-line">
+                            <h4 class="title">Não sou cadastrado</h4>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <form ng-submit="vm.cadastrar(vm.dados)">
+                    <div class="row">
+                        <div class="col-12 col-md-6 mb-15">
+                            <label>Nome</label>
+                            <input type="text" class="form-control" ng-model="vm.dados.nome" required>
+                        </div>
+                        <div class="col-12 col-md-6 mb-15">
+                            <label>E-mail</label>
+                            <input type="email" class="form-control" ng-model="vm.dados.email" required>
+                        </div>
+                        <div class="col-12 col-md-6 mb-15">
+                            <label>Telefone</label>
+                            <input type="text" class="form-control" ng-model="vm.dados.telefone" ui-mask="(99) 9?9999-9999">
+                        </div>
+                        <div class="col-12 col-md-6 mb-15">
+                            <label>CEP</label>
+                            <input type="text" class="form-control" ng-model="vm.dados.cep" ui-mask="99999-999" ng-change="vm.buscaCep(vm.dados.cep)">
+                        </div>
+                        <div class="col-12 col-md-9 mb-15">
+                            <label>Rua</label>
+                            <input type="text" class="form-control" ng-model="vm.dados.logradouro">
+                        </div>
+                        <div class="col-12 col-md-3 mb-15">
+                            <label>Número</label>
+                            <input type="number" class="form-control" ng-model="vm.dados.numero">
+                        </div>
+                        <div class="col-12 col-md-4 mb-15">
+                            <label>Complemento</label>
+                            <input type="text" class="form-control" ng-model="vm.dados.complemento">
+                        </div>
+                        <div class="col-12 col-md-8 mb-15">
+                            <label>Bairro</label>
+                            <input type="text" class="form-control" ng-model="vm.dados.bairro">
+                        </div>
+                        <div class="col-12 col-md-8 mb-15">
+                            <label>Cidade</label>
+                            <input type="text" class="form-control" ng-model="vm.dados.cidade">
+                        </div>
+                        <div class="col-12 col-md-4 mb-15">
+                            <label>Estado</label>
+                            <select class="form-control" ng-model="vm.dados.uf">
+                                <option ng-repeat="x in estados | orderBy: 'sigla'">{{x.sigla}}</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 mb-15">
+                            <label>Senha</label>
+                            <input type="password" class="form-control" ng-model="vm.dados.senha" required>
+                        </div>
+                        <div class="col-12 col-md-6 mb-15">
+                            <label>Repetir senha</label>
+                            <input type="password" class="form-control" ng-model="vm.dados.repetir" required>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-principal btn-block-sm btn-block-xs float-right" style="width: 150px;">Cadastrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal esqueci senha -->
+<div ng-include="'views/modals/modalEsqueciSenha.html'"></div>

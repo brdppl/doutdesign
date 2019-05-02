@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#791818">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#791818">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#791818">
+
+    <base href="/doutdesign/">
+
+    <link rel="shortcut icon" type="image/png" href="img/logo.png"/>
+    <title>Doutdesign</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/deps.min.css">
+    <link rel="stylesheet" href="css/app.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/responsive.min.css">
+
+    <!-- Font-awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+<!-- Header -->
+<div ng-include="'views/includes/header.html'" ng-controller="headerCtrl as vm" ng-cloak></div>
+<!-- Header mobile -->
+<div ng-include="'views/includes/header-mobile.html'" ng-controller="headerCtrl as vm"></div>
+<!-- Backdrop -->
+<div ng-class="{'sidebar-backdrop': backdrop}" ng-click="backdropClick()"></div>
+
+<!-- Toaster -->
+<toaster-container toaster-options="{'time-out': 6000 }"></toaster-container>
+
+<!-- View -->
+<main ui-view ng-class="{'margin-for-navbar-fixed-top': !$state.includes('inicio')}">
+    <div class="gooey">
+        <span class="dot"></span>
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</main>
+
+<!-- Modal Search -->
+<div ng-include="'views/modals/modalSearch.html'" ng-controller="headerCtrl as vm"></div>
+
+<!-- Carrinho -->
+<div ng-include="'views/includes/carrinho-sidebar.html'" ng-controller="headerCtrl as vm"></div>
+
+<!-- Footer -->
+<div ng-include="'views/includes/footer.html'" ng-cloak></div>
+
+
+<!-- Scripts -->
+<script src="js/deps.min.js"></script>
+<script src="js/app.min.js"></script>
+</body>
+</html>

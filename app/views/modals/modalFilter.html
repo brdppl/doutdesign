@@ -1,0 +1,24 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="modal-title">Filtrar</h5>
+</div>
+<div class="modal-body" id="modal-body">
+    <ul class="list-unstyled filter-list">
+        <li><h5>Categoria</h5></li>
+        <li ng-repeat="x in vm.categorias | orderBy: 'categoria'">
+            <label for="categoria{{$index}}" ng-class="{'filterActive': vm.categoria === x.categoria}">
+                <input type="radio" id="categoria{{$index}}" name="optgroup" ng-model="vm.categoria" ng-value="x.categoria">{{x.categoria}}
+            </label>
+        </li>
+        <li class="mt-15"><h5>Preço</h5></li>
+        <rzslider
+            class="custom-slider"
+            rz-slider-model="vm.sliderPreco.minValue"
+            rz-slider-high="vm.sliderPreco.maxValue"
+            rz-slider-options="vm.sliderPreco.options">
+        </rzslider>
+    </ul>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" type="button" ng-click="vm.ok(vm.categoria, vm.sliderPreco.minValue, vm.sliderPreco.maxValue)">Filtrar</button>
+    <button class="btn btn-light" type="button" ng-click="vm.cancel()">Fechar</button>
+</div>

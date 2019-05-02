@@ -1,0 +1,63 @@
+<div class="dashboard">
+    <div class="container content">
+        <div ng-include="'views/dashboard/navbar-cliente.html'"></div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="title-line mt-30 mb-15">
+                    <h1 class="title">Meus pedidos</h1>
+                    <p class="line"></p>
+                </div>
+
+                <div class="table-responsive">          
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th ng-click="orderByField='idPedido'; reverseSort = !reverseSort">ID
+                                    <i class="fas fa-sort"></i>
+                                </th>
+                                <th ng-click="orderByField='produto'; reverseSort = !reverseSort">Produto
+                                    <i class="fas fa-sort"></i>
+                                </th>
+                                <th ng-click="orderByField='valor'; reverseSort = !reverseSort">Valor
+                                    <i class="fas fa-sort"></i>
+                                </th>
+                                <th ng-click="orderByField='quantidade'; reverseSort = !reverseSort">Frete
+                                    <i class="fas fa-sort"></i>
+                                </th>
+                                <th ng-click="orderByField='data'; reverseSort = !reverseSort">Data
+                                    <i class="fas fa-sort"></i>
+                                </th>
+                                <th ng-click="orderByField='status'; reverseSort = !reverseSort">Status
+                                    <i class="fas fa-sort"></i>
+                                </th>
+                                <th>Detalhes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="x in vm.pedidos | filter: q | orderBy:orderByField:reverseSort | itemsPerPage: vm.pageSize" pagination-id="pedidos" current-page="vm.pagination.current">
+                                <td>{{x.idPedido}}</td>
+                                <td>
+                                    <span ng-repeat="p in x.produtos" style="background-color: #eee; padding: 5px; margin: 5px; border-radius: 5px; display: inline-block">
+                                        ({{p.quantidade}}) {{p.produto}}
+                                    </span>
+                                </td>
+                                <td>{{x.valorTotal | currency}}</td>
+                                <td>{{x.freteTipo}}</td>
+                                <td>{{x.dtPedido | date: "dd/MM/yyyy"}}</td>
+                                <td ng-class="x.status | colorFilter">{{x.status}}</td>
+                                <td><button type="button" class="btn btn-sm btn-light" ng-click="vm.detalhes(x)">Ver detalhes</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <dir-pagination-controls
+                    pagination-id="pedidos">
+                </dir-pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pedido -->
+<div ng-include="'views/modals/modalPedido.html'"></div>

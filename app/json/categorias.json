@@ -1,0 +1,107 @@
+{
+    "status": true,
+    "lista": [
+        {
+            "idCategoria": 1,
+            "categoria": "Sofás",
+            "ativo": 1,
+            "secao": "Móveis"
+        },
+        {
+            "idCategoria": 2,
+            "categoria": "Camas",
+            "ativo": 1,
+            "secao": "Móveis"
+        },
+        {
+            "idCategoria": 3,
+            "categoria": "Cadeiras",
+            "ativo": 1,
+            "secao": "Móveis"
+        },
+        {
+            "idCategoria": 4,
+            "categoria": "Poltronas",
+            "ativo": 1,
+            "secao": "Móveis"
+        },
+        {
+            "idCategoria": 5,
+            "categoria": "Escritório",
+            "ativo": 1,
+            "secao": "Ambientes"
+        },
+        {
+            "idCategoria": 6,
+            "categoria": "Cozinha",
+            "ativo": 1,
+            "secao": "Ambientes"
+        },
+        {
+            "idCategoria": 7,
+            "categoria": "Banheiro",
+            "ativo": 1,
+            "secao": "Ambientes"
+        },
+        {
+            "idCategoria": 8,
+            "categoria": "Sala de estar",
+            "ativo": 1,
+            "secao": "Ambientes"
+        },
+        {
+            "idCategoria": 9,
+            "categoria": "Sala de jantar",
+            "ativo": 1,
+            "secao": "Ambientes"
+        },
+        {
+            "idCategoria": 10,
+            "categoria": "Quarto",
+            "ativo": 1,
+            "secao": "Ambientes"
+        },
+        {
+            "idCategoria": 11,
+            "categoria": "Tapetes",
+            "ativo": 1,
+            "secao": "Acessórios"
+        },
+        {
+            "idCategoria": 12,
+            "categoria": "Iluminação",
+            "ativo": 1,
+            "secao": "Acessórios"
+        },
+        {
+            "idCategoria": 13,
+            "categoria": "Cortinas",
+            "ativo": 1,
+            "secao": "Acessórios"
+        },
+        {
+            "idCategoria": 14,
+            "categoria": "Prateleiras",
+            "ativo": 1,
+            "secao": "Acessórios"
+        },
+        {
+            "idCategoria": 15,
+            "categoria": "Decoração",
+            "ativo": 1,
+            "secao": "Acessórios"
+        },
+        {
+            "idCategoria": 16,
+            "categoria": "Armários",
+            "ativo": 1,
+            "secao": "Móveis"
+        },
+        {
+            "idCategoria": 17,
+            "categoria": "Mesas",
+            "ativo": 1,
+            "secao": "Móveis"
+        }
+    ]
+}

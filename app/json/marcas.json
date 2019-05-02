@@ -1,0 +1,45 @@
+{
+    "status": true,
+    "lista": [
+        {
+            "idMarca": 1,
+            "imagem": "img/whiskas.png"
+        },
+        {
+            "idMarca": 2,
+            "imagem": "img/pedigree.png"
+        },
+        {
+            "idMarca": 3,
+            "imagem": "img/royal-canin.png"
+        },
+        {
+            "idMarca": 4,
+            "imagem": "img/frontline.png"
+        },
+        {
+            "idMarca": 5,
+            "imagem": "img/progato.png"
+        },
+        {
+            "idMarca": 6,
+            "imagem": "img/whiskas.png"
+        },
+        {
+            "idMarca": 7,
+            "imagem": "img/pedigree.png"
+        },
+        {
+            "idMarca": 8,
+            "imagem": "img/royal-canin.png"
+        },
+        {
+            "idMarca": 9,
+            "imagem": "img/frontline.png"
+        },
+        {
+            "idMarca": 10,
+            "imagem": "img/progato.png"
+        }
+    ]
+}

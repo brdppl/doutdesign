@@ -1,0 +1,21 @@
+{
+    "status": true,
+    "lista": [
+        {
+            "idProduto": 3,
+            "nome": "Sofá 3 lugares",
+            "foto": "img/produtos/produto3.jpg",
+            "preco": 699.90,
+            "promocao": 0,
+            "qtd": 1
+        },
+        {
+            "idProduto": 4,
+            "nome": "Cadeira confortável master",
+            "foto": "img/produtos/produto4.jpg",
+            "preco": 349.90,
+            "promocao": 0,
+            "qtd": 1
+        }
+    ]
+}

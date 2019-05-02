@@ -1,0 +1,172 @@
+<!-- Banners -->
+<div ng-include="'views/includes/banner.html'"></div>
+
+<div class="home">
+    <div class="container">
+        <section class="produtos">
+            <div class="title-line">
+                <h4 class="title">Produtos em destaque</h4>
+                <div class="line"></div>
+            </div>
+            <slick responsive="vm.breakpoints" infinite=true slides-to-show=4 slides-to-scroll=4 autoplay=false speed=700 arrows=true init-onload=false data="vm.loadProdutos1" ng-if="vm.loadProdutos1">
+                <div class="item" ng-repeat="x in vm.produtos | filter:{'destaque': 1} | limitTo: 16">
+                    <a ui-sref="produto({id: x.idProduto})">
+                        <div class="box-produto">
+                            <span ng-if="x.promocao" class="promocao">Promoção</span>
+                            <div class="box-img">
+                                <img ng-src="{{x.foto}}">
+                            </div>
+                            <p class="produto-nome">{{x.titulo | limite}}</p>
+                            <p class="produto-preco" ng-if="!x.promocao">{{x.preco | currency}}</p>
+                            <p class="produto-preco preco-promocao" ng-if="x.promocao">
+                                <span class="antigo">{{x.precoCerto | currency}}</span>
+                                <span>{{x.preco | currency}}</span>
+                            </p>
+                            <a ui-sref="produto({id: x.idProduto})" class="btn btn-produto btn-block">Detalhes do produto</a>
+                        </div>
+                    </a>
+                </div>
+            </slick>
+        </section>
+
+        <section class="banner-home content">
+            <a ui-sref=""><img src="img/banner3.png" class="img-fluid"></a>
+        </section>
+
+        <section class="produtos">
+            <div class="title-line">
+                <h4 class="title">Novidades para você</h4>
+                <div class="line"></div>
+            </div>
+            <slick responsive="vm.breakpoints" infinite=true slides-to-show=4 slides-to-scroll=4 autoplay=false speed=700 arrows=true init-onload=false data="vm.loadProdutos1" ng-if="vm.loadProdutos1">
+                <div class="item" ng-repeat="x in vm.produtos | orderBy: '-dtCadastro' | limitTo: 16">
+                    <a ui-sref="produto({id: x.idProduto})">
+                        <div class="box-produto">
+                            <span ng-if="x.promocao" class="promocao">Promoção</span>
+                            <div class="box-img">
+                                <img ng-src="{{x.foto}}">
+                            </div>
+                            <p class="produto-nome">{{x.titulo | limite}}</p>
+                            <p class="produto-preco" ng-if="!x.promocao">{{x.preco | currency}}</p>
+                            <p class="produto-preco preco-promocao" ng-if="x.promocao">
+                                <span class="antigo">{{x.precoCerto | currency}}</span>
+                                <span>{{x.preco | currency}}</span>
+                            </p>
+                            <a ui-sref="produto({id: x.idProduto})" class="btn btn-produto btn-block">Detalhes do produto</a>
+                        </div>
+                    </a>
+                </div>
+            </slick>
+        </section>
+
+        <section class="produtos content">
+            <div class="title-line">
+                <h4 class="title">Baixou o preço</h4>
+                <div class="line"></div>
+            </div>
+            <slick responsive="vm.breakpoints" infinite=true slides-to-show=4 slides-to-scroll=4 autoplay=false speed=700 arrows=true init-onload=false data="vm.loadProdutos1" ng-if="vm.loadProdutos1">
+                <div class="item" ng-repeat="x in vm.produtos | filter:{'promocao': 1} | limitTo: 16">
+                    <a ui-sref="produto({id: x.idProduto})">
+                        <div class="box-produto">
+                            <span ng-if="x.promocao" class="promocao">Promoção</span>
+                            <div class="box-img">
+                                <img ng-src="{{x.foto}}">
+                            </div>
+                            <p class="produto-nome">{{x.titulo | limite}}</p>
+                            <p class="produto-preco" ng-if="!x.promocao">{{x.preco | currency}}</p>
+                            <p class="produto-preco preco-promocao" ng-if="x.promocao">
+                                <span class="antigo">{{x.precoCerto | currency}}</span>
+                                <span>{{x.preco | currency}}</span>
+                            </p>
+                            <a ui-sref="produto({id: x.idProduto})" class="btn btn-produto btn-block">Detalhes do produto</a>
+                        </div>
+                    </a>
+                </div>
+            </slick>
+        </section>
+
+        <section class="produtos" style="padding-bottom: 50px;">
+            <div class="title-line">
+                <h4 class="title">Mais vistos</h4>
+                <div class="line"></div>
+            </div>
+            <slick responsive="vm.breakpoints" infinite=true slides-to-show=4 slides-to-scroll=4 autoplay=false speed=700 arrows=true init-onload=false data="vm.loadProdutos1" ng-if="vm.loadProdutos1">
+                <div class="item" ng-repeat="x in vm.produtos | orderBy: '-visitas' | limitTo: 16">
+                    <a ui-sref="produto({id: x.idProduto})">
+                        <div class="box-produto">
+                            <span ng-if="x.promocao" class="promocao">Promoção</span>
+                            <div class="box-img">
+                                <img ng-src="{{x.foto}}">
+                            </div>
+                            <p class="produto-nome">{{x.titulo | limite}}</p>
+                            <p class="produto-preco" ng-if="!x.promocao">{{x.preco | currency}}</p>
+                            <p class="produto-preco preco-promocao" ng-if="x.promocao">
+                                <span class="antigo">{{x.precoCerto | currency}}</span>
+                                <span>{{x.preco | currency}}</span>
+                            </p>
+                            <a ui-sref="produto({id: x.idProduto})" class="btn btn-produto btn-block">Detalhes do produto</a>
+                        </div>
+                    </a>
+                </div>
+            </slick>
+        </section>
+    </div>
+
+    <!-- Newsletter -->
+    <section class="newsletter content">
+        <div class="container">
+            <div class="row icones mb-50">
+                <div class="col-12 col-md-10 offset-md-1">
+                    <div class="row">
+                        <div class="col-12 col-md-4 mb-xs-15">
+                            <div class="icon-container">
+                                <i class="fas fa-store-alt"></i>
+                            </div>
+                            <div class="contato-container">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-xs-15">
+                            <div class="icon-container">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="contato-container">
+                                <p>Donec finibus, urna ac efficitur lacinia</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-xs-15">
+                            <div class="icon-container">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div class="contato-container">
+                                <p>In eu diam ornare, egestas metus nec, gravida tellus</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-5 mb-xs-15">
+                    <form ng-submit="vm.enviar(vm.newsletter)">
+                        <label>Receba nossas novidades por E-mail</label>
+                        <div class="input-group input-group-lg mb-3">
+                            <input type="text" class="form-control" placeholder="Digite seu e-mail" ng-model="vm.newsletter.email">
+                            <div class="input-group-append">
+                                <button class="btn btn-principal" type="submit">Enviar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-12 col-md-5 offset-md-2 mb-xs-15">
+                    <p class="label">Segue lá</p>
+                    <ul class="list-unstyled social-list">
+                        <li><a href="" class="facebook"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="" class="instagram"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="" class="twitter"><i class="fab fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

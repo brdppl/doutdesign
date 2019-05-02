@@ -1,0 +1,17 @@
+<div class="modal fade" id="modalSearch" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <a class="fechar" data-dismiss="modal"><i class="fas fa-times"></i></a>
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form>
+                    <div class="input-group input-group-lg mb-3">
+                        <input type="text" class="form-control" ng-model="vm.q" placeholder="Pesquisar..." autofocus>
+                        <div class="input-group-append">
+                            <button class="btn" type="submit" ng-click="vm.buscar(vm.q)"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

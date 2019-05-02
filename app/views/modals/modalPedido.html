@@ -1,0 +1,112 @@
+<div id="modalPedido" class="modal fade modalDados" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="margin-top: 0;">Detalhes do pedido {{vm.dados.idPedido}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <div class="tabela">
+                    <table class="table table-hover table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Qtd.</th>
+                                <th>Valor Un.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in vm.dados.produtos">
+                                <td>{{x.produto}}</td>
+                                <td>{{x.quantidade | number}}</td>
+                                <td>{{x.valorUnitario | currency}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6 mb-15">
+                        <div class="box">
+                            <label>Cliente:</label>
+                            <p>{{vm.dados.cliente}}</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-15">
+                        <div class="box">
+                            <label>Status do pedido:</label>
+                            <p ng-class="vm.dados.status | colorFilter">{{vm.dados.status}}</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-15">
+                        <div class="box">
+                            <label>Data do pedido:</label>
+                            <p>{{vm.dados.dtPedido | date: 'dd/MM/yyyy'}}</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-15">
+                        <div class="box">
+                            <label>Horário do pedido:</label>
+                            <p>{{vm.dados.dtPedido | date: 'hh:mm'}}</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-15">
+                        <div class="box">
+                            <label>Logradouro:</label>
+                            <p>{{vm.dados.logradouro}}</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-15">
+                        <div class="box">
+                            <label>Bairro:</label>
+                            <p>{{vm.dados.bairro}}</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-15">
+                        <div class="box">
+                            <label>Cidade:</label>
+                            <p>{{vm.dados.cidade}}</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-15">
+                        <div class="box">
+                            <label>UF:</label>
+                            <p>{{vm.dados.uf}}</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-15">
+                        <div class="box">
+                            <label>Frete:</label>
+                            <p>{{vm.dados.freteTipo}}</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-15">
+                        <div class="box">
+                            <label>Valor do frete:</label>
+                            <p>{{vm.dados.valorFrete | currency}}</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-15" ng-if="vm.dados.valorDesconto.length">
+                        <div class="box">
+                            <label>Valor do desconto:</label>
+                            <p>{{vm.dados.valorDesconto | currency}}</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-15">
+                        <div class="box">
+                            <label>Valor Total:</label>
+                            <p>{{vm.dados.valorTotal | currency}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-light btn-block-xs" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+
+    </div>
+</div>

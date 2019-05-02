@@ -1,0 +1,18 @@
+{
+    "telefone1": "(51) 3344-5566",
+    "telefone2": "(51) 3322-1155",
+    "email": "contato@meuemail.com.br",
+    "rua": "Vigário José Inácio",
+    "numero": "371",
+    "complemento": "",
+    "bairro": "Centro Histórico",
+    "cep": "90020-100",
+    "cidade": "Porto Alegre",
+    "uf": "RS",
+    "pais": "Brasil",
+    "maps": "https://goo.gl/maps/tj43JDrCs2Q2",
+    "iframe": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.2737054205295!2d-51.228410984523215!3d-30.02900458188802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95197908c7d0bc55%3A0x59bdc6d069755e0f!2sR.+Vig.+Jos%C3%A9+In%C3%A1cio%2C+371+-+Centro+Hist%C3%B3rico%2C+Porto+Alegre+-+RS%2C+90020-100!5e0!3m2!1spt-BR!2sbr!4v1552569308131",
+    "facebook": "meufacebook",
+    "instagram": "meuinstagram",
+    "twitter": "meutwitter"
+}

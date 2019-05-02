@@ -1,0 +1,119 @@
+<div class="pagina-busca">
+    <div class="container content">
+        <div class="produtos">
+            <h3 class="mb-15">
+                Resultado: {{vm.buscaFiltrada.length}}
+                <span ng-if="vm.buscaFiltrada.length > 1 || vm.buscaFiltrada.length < 1">itens encontrados</span>
+                <span ng-if="vm.buscaFiltrada.length === 1">item encontrado</span>
+            </h3>
+            <div class="filtros mb-30">
+                <span ng-if="vm.buscaCampo.length">{{vm.buscaCampo}}<i class="fas fa-times-circle" ng-click="vm.limparBusca('')"></i></span>
+                <span ng-if="vm.categoria">{{vm.categoria}}<i class="fas fa-times-circle" ng-click="vm.limparFiltro('')"></i></span>
+                <span ng-if="vm.minPrice">Mín: {{vm.sliderPreco.minValue | currency}}<i class="fas fa-times-circle" ng-click="vm.limparPrecoMin('')"></i></span>
+                <span ng-if="vm.maxPrice">Máx: {{vm.sliderPreco.maxValue | currency}}<i class="fas fa-times-circle" ng-click="vm.limparPrecoMax('')"></i></span>
+                <span ng-if="vm.secao">{{vm.secao}}<i class="fas fa-times-circle" ng-click="vm.limparSecao('')"></i></span>
+            </div>
+            <div class="row">
+                <!-- ############ Filters Desktop ############ -->
+                <div class="col-12 col-md-3 filter-list d-none d-md-block">
+                    <div class="title-line">
+                        <h4 class="title">Ordenar</h4>
+                        <div class="line"></div>
+                    </div>
+                    <ul class="list-unstyled">
+                        <li><a ng-click="vm.order('preco')" ng-class="{'filterActive': vm.ordenacao === 'preco'}">Menor preço</a></li>
+                        <li><a ng-click="vm.order('-preco')" ng-class="{'filterActive': vm.ordenacao === '-preco'}">Maior preço</a></li>
+                        <li><a ng-click="vm.order('titulo')" ng-class="{'filterActive': vm.ordenacao === 'titulo'}">Nome A-Z</a></li>
+                        <li><a ng-click="vm.order('-titulo')" ng-class="{'filterActive': vm.ordenacao === '-titulo'}">Nome Z-A</a></li>
+                        <li><a ng-click="vm.order('-dtCadastro')" ng-class="{'filterActive': vm.ordenacao === '-dtCadastro'}">Mais recente</a></li>
+                        <li><a ng-click="vm.order('dtCadastro')" ng-class="{'filterActive': vm.ordenacao === 'dtCadastro'}">Mais antigo</a></li>
+                    </ul>
+
+                    <div class="title-line">
+                        <h4 class="title">Filtrar</h4>
+                        <div class="line"></div>
+                    </div>
+                    <ul class="list-unstyled">
+                        <li><h5>Categoria</h5></li>
+                        <li ng-repeat="x in vm.categorias | filter:{'secao': vm.secao} | orderBy: 'categoria'">
+                            <label for="categoria{{$index}}" ng-class="{'filterActive': vm.categoria === x.categoria}">
+                                <input type="radio" name="optgroup" id="categoria{{$index}}" ng-model="vm.categoria" ng-value="x.categoria">{{x.categoria}}
+                            </label>
+                        </li>
+                        <li class="mt-15"><h5>Preço</h5></li>
+                        <rzslider
+                            class="custom-slider"
+                            rz-slider-model="vm.sliderPreco.minValue"
+                            rz-slider-high="vm.sliderPreco.maxValue"
+                            rz-slider-options="vm.sliderPreco.options">
+                        </rzslider>
+                    </ul>
+                    <button type="button" class="btn btn-principal btn-block" ng-click="vm.filtrar(vm.categoria, vm.sliderPreco.minValue, vm.sliderPreco.maxValue)">Filtrar</button>
+                </div>
+                <!-- ############ Filters Mobile ############ -->
+                <div class="col-12 d-block d-md-none d-lg-none d-xl-none">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="btn-group mb-2" uib-dropdown is-open="status.isopen" style="width: 100%; display: block;">
+                                <button id="single-button" type="button" class="btn btn-light btn-block" uib-dropdown-toggle>
+                                    Ordenar <span class="caret"></span>
+                                </button>
+                                <div class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                                    <a class="dropdown-item" ng-click="vm.order('preco')" ng-class="{'filterActive': vm.ordenacao === 'preco'}">Menor preço</a>
+                                    <a class="dropdown-item" ng-click="vm.order('-preco')" ng-class="{'filterActive': vm.ordenacao === '-preco'}">Maior preço</a>
+                                    <a class="dropdown-item" ng-click="vm.order('titulo')" ng-class="{'filterActive': vm.ordenacao === 'titulo'}">Nome A-Z</a>
+                                    <a class="dropdown-item" ng-click="vm.order('-titulo')" ng-class="{'filterActive': vm.ordenacao === '-titulo'}">Nome Z-A</a>
+                                    <a class="dropdown-item" ng-click="vm.order('-dtCadastro')" ng-class="{'filterActive': vm.ordenacao === '-dtCadastro'}">Mais recente</a>
+                                    <a class="dropdown-item" ng-click="vm.order('dtCadastro')" ng-class="{'filterActive': vm.ordenacao === 'dtCadastro'}">Mais antigo</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" class="btn btn-light btn-block mb-2" ng-click="vm.openModalFilter()"><i class="fas fa-filter"></i> Filtros</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-9">
+                    <div class="row">
+                        <div class="col-12 mb-30 centraliza" ng-if="vm.isLoading">
+                            <div class="fa-3x">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-30" ng-if="!vm.buscaFiltrada.length && !vm.isLoading">
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i> Nenhum item encontrado!
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-30 item" dir-paginate="x in vm.buscaFiltrada = (vm.produtos | filter: vm.buscaCampo | filter: {'categoria': vm.categoria} | filter:vm.minFilter | filter:vm.maxFilter | filter:{'secao': vm.secao} | orderBy:vm.ordenacao) | itemsPerPage: 15" pagination-id="produtos">
+                            <a ui-sref="produto({id: x.idProduto})">
+                                <div class="box-produto">
+                                    <span ng-if="x.promocao" class="promocao">Promoção</span>
+                                    <div class="box-img">
+                                        <img ng-src="{{x.foto}}">
+                                    </div>
+                                    <p class="produto-nome">{{x.titulo | limite}}</p>
+                                    <p class="produto-preco" ng-if="!x.promocao">{{x.preco | currency}}</p>
+                                    <p class="produto-preco preco-promocao" ng-if="x.promocao">
+                                        <span class="antigo">{{x.precoCerto | currency}}</span>
+                                        <span>{{x.preco | currency}}</span>
+                                    </p>
+                                    <a ui-sref="produto({id: x.idProduto})" class="btn btn-produto btn-block">Detalhes do produto</a>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-12">
+                            <dir-pagination-controls
+                                template-url="views/includes/custom-pagination.html"
+                                class="float-right"
+                                max-size="5"
+                                pagination-id="produtos"
+                                on-page-change="vm.scrollTop()">
+                            </dir-pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
